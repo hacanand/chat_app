@@ -7,3 +7,8 @@ btn.onclick = function exec() {
         msg:inputMsg.value
     })
 }
+socket.on("msg_recv", (data) => {
+  let li = document.createElement("li");
+  li.innerText = data.msg;
+  msgList.appendChild(li);
+});

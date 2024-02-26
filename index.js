@@ -8,9 +8,12 @@ const io = socketIo(server);
 
 io.on("connection", (socket) => {
     socket.on('msg_send', (data) => {
-        console.log(data);
+      console.log(data);
+      io.emit('msg_recv', data);
+      // socket.emit('msg_recv', data); //all connect clients
   })
  
+
 });
 app.use("/", express.static(__dirname + "/public"));
 server.listen(3000, () => {
